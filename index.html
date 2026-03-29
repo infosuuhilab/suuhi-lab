@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>あなただけの数秘術診断レポート | suuhi_lab</title>
+  <meta name="description" content="生年月日だけで、あなたの本質・才能・今年の流れがわかります。数秘術診断レポート by suuhi_lab">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ===== Reset & Base ===== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-main: #FFFDF9;
+      --bg-beige: #F9EEE7;
+      --accent: #E8A4A4;
+      --gold: #C9A96E;
+      --text: #3D2B2B;
+      --text-sub: #8B6F6F;
+      --btn-bg: #E8A4A4;
+      --btn-text: #FFFFFF;
+      --dark: #3D2B2B;
+      --font-serif: 'Noto Serif JP', serif;
+      --font-sans: 'Noto Sans JP', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--text);
+      background: var(--bg-main);
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-serif);
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ===== Gold Divider ===== */
+    .gold-divider {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 auto 2rem;
+    }
+
+    .gold-divider-full {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 0;
+    }
+
+    /* ===== Fade-in animation ===== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .fade-in-delay-1 { transition-delay: 0.1s; }
+    .fade-in-delay-2 { transition-delay: 0.2s; }
+    .fade-in-delay-3 { transition-delay: 0.3s; }
+    .fade-in-delay-4 { transition-delay: 0.4s; }
+    .fade-in-delay-5 { transition-delay: 0.5s; }
+
+    /* ===== Section Base ===== */
+    section {
+      padding: 4rem 1.5rem;
+    }
+
+    .section-inner {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text);
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title-small {
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    /* ===== Button ===== */
+    .btn {
+      display: inline-block;
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      font-family: var(--font-sans);
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      text-align: center;
+      cursor: pointer;
+      border: none;
+      transition: box-shadow 0.3s ease, transform 0.2s ease;
+      letter-spacing: 0.03em;
+    }
+
+    .btn:hover {
+      box-shadow: 0 6px 20px rgba(232, 164, 164, 0.45);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+    }
+
+    .btn-outline:hover {
+      background: rgba(232, 164, 164, 0.08);
+      box-shadow: 0 4px 14px rgba(232, 164, 164, 0.25);
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: #fff;
+    }
+
+    .btn-gold:hover {
+      box-shadow: 0 6px 20px rgba(201, 169, 110, 0.45);
+      transform: translateY(-2px);
+    }
+
+    .btn-full {
+      width: 100%;
+      display: block;
+    }
+
+    .btn-lg {
+      font-size: 1.1rem;
+      padding: 1.1rem 2.4rem;
+    }
+
+    /* ===== HERO ===== */
+    #hero {
+      background: linear-gradient(160deg, #FFFDF9 0%, #F9EEE7 100%);
+      padding: 5rem 1.5rem 5rem;
+      position: relative;
+    }
+
+    .hero-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+    }
+
+    .hero-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-family: var(--font-sans);
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      padding: 0.25rem 1rem;
+      border-radius: 20px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #3D2B2B;
+      line-height: 1.5;
+      margin-bottom: 2rem;
+    }
+
+    .hero-h2 {
+      font-size: 1rem;
+      color: #8B6F6F;
+      font-weight: 400;
+      margin-top: 12px;
+      margin-bottom: 0.6rem;
+      font-family: var(--font-sans);
+      line-height: 1.6;
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: var(--text-sub);
+      margin-bottom: 2.5rem;
+      font-weight: 400;
+    }
+
+    .hero-cta-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .hero-btn-note {
+      font-size: 0.72rem;
+      color: var(--text-sub);
+      margin-top: -0.5rem;
+    }
+
+    .hero-sub-link {
+      font-size: 0.9rem;
+      color: var(--text-sub);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      cursor: pointer;
+    }
+
+    .hero-sub-link:hover {
+      color: var(--accent);
+    }
+
+    /* SVG Stars decoration */
+    .hero-deco {
+      display: none;
+      pointer-events: none;
+    }
+
+    @media (min-width: 768px) {
+      .hero-deco {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 45%;
+        height: 100%;
+        opacity: 0.18;
+      }
+    }
+
+    /* ===== PROBLEM ===== */
+    #problem {
+      background: #fff;
+    }
+
+    .problem-text {
+      color: var(--text);
+      margin-top: 1.5rem;
+      font-size: 0.95rem;
+      line-height: 2;
+    }
+
+    .problem-list {
+      list-style: none;
+      margin: 1.2rem 0;
+    }
+
+    .problem-list li {
+      padding: 0.5rem 0 0.5rem 1.8rem;
+      position: relative;
+      color: var(--text-sub);
+      font-size: 0.95rem;
+      border-bottom: 1px solid #f3ece9;
+    }
+
+    .problem-list li::before {
+      content: '…';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 1.2rem;
+      top: 0.4rem;
+    }
+
+    .problem-closing {
+      margin-top: 1.5rem;
+      padding: 1.2rem 1.5rem;
+      background: var(--bg-beige);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.9;
+    }
+
+    /* ===== AGITATION ===== */
+    #agitation {
+      background: var(--bg-beige);
+    }
+
+    .check-list {
+      list-style: none;
+      margin: 1.5rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .check-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      background: #fff;
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+      font-size: 0.95rem;
+      box-shadow: 0 2px 8px rgba(61, 43, 43, 0.05);
+    }
+
+    .check-icon {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0.1rem;
+    }
+
+    .check-icon svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    .agitation-closing {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 1rem;
+      color: var(--text);
+      line-height: 1.9;
+    }
+
+    .agitation-closing strong {
+      color: var(--accent);
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+    }
+
+    /* ===== SOLUTION ===== */
+    #solution {
+      background: #fff;
+    }
+
+    .solution-text {
+      font-size: 0.95rem;
+      color: var(--text-sub);
+      margin: 1.5rem 0 2.5rem;
+      line-height: 2;
+    }
+
+    .number-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.9rem;
+      margin-top: 1.5rem;
+    }
+
+    .number-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 1.4rem 0.5rem 1.1rem;
+      text-align: center;
+      box-shadow: 0 3px 14px rgba(61, 43, 43, 0.07);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .number-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 28px rgba(201, 169, 110, 0.18);
+    }
+
+    .num-svg {
+      width: 100%;
+      height: 72px;
+      overflow: visible;
+    }
+
+    .card-line {
+      width: 52%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #e0ccc4, transparent);
+      margin: 0.7rem auto 0.55rem;
+    }
+
+    .number-card .card-title {
+      font-size: 0.68rem;
+      color: var(--text-sub);
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      font-family: var(--font-sans);
+    }
+
+    /* ===== BENEFIT ===== */
+    #benefit {
+      background: var(--bg-beige);
+    }
+
+    .benefit-list {
+      list-style: none;
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .benefit-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .benefit-icon {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      margin-top: 0.15rem;
+    }
+
+    .benefit-icon svg {
+      display: block;
+    }
+
+    /* ===== EVIDENCE ===== */
+    #evidence {
+      background: #fff;
+    }
+
+    .evidence-empty {
+      margin-top: 2rem;
+      padding: 2.5rem;
+      background: var(--bg-beige);
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    .evidence-empty p {
+      color: var(--text-sub);
+      font-size: 0.9rem;
+    }
+
+    .review-card-placeholder {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .review-card {
+      background: #fff;
+      border: 1px solid #f0e8e4;
+      border-radius: 12px;
+      padding: 1.2rem;
+      opacity: 0.4;
+    }
+
+    .review-card .stars {
+      color: var(--gold);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .review-card .review-text {
+      font-size: 0.85rem;
+      color: var(--text-sub);
+      font-style: italic;
+    }
+
+    .review-card .review-author {
+      font-size: 0.78rem;
+      color: #bbb;
+      margin-top: 0.6rem;
+      text-align: right;
+    }
+
+    /* ===== FREE SECTION ===== */
+    #free {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    #free .section-title {
+      color: #fff;
+    }
+
+    .free-inner {
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    .free-content-box {
+      background: rgba(255,255,255,0.2);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .free-content-box .free-badge {
+      display: inline-block;
+      background: #fff;
+      color: var(--accent);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.2rem 0.75rem;
+      border-radius: 20px;
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+
+    .free-content-box h3 {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+      color: #fff;
+    }
+
+    .free-content-box ul {
+      list-style: none;
+      font-size: 0.9rem;
+      line-height: 2;
+    }
+
+    .free-content-box ul li::before {
+      content: '・';
+    }
+
+    .free-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .free-form input[type="email"] {
+      width: 100%;
+      padding: 0.9rem 1.2rem;
+      border-radius: 50px;
+      border: none;
+      font-size: 1rem;
+      font-family: var(--font-sans);
+      outline: none;
+      color: var(--text);
+    }
+
+    .free-form input[type="email"]::placeholder {
+      color: #bbb;
+    }
+
+    .btn-white {
+      background: #fff;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .btn-white:hover {
+      box-shadow: 0 6px 20px rgba(255,255,255,0.35);
+      transform: translateY(-2px);
+    }
+
+    .free-note {
+      font-size: 0.72rem;
+      opacity: 0.8;
+      margin-top: 0.75rem;
+      line-height: 1.8;
+    }
+
+    /* ===== CONTENTS (PRICING) ===== */
+    #contents {
+      background: var(--bg-beige);
+    }
+
+    .pricing-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .plan-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 2rem 1.5rem;
+      box-shadow: 0 4px 20px rgba(61,43,43,0.07);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .plan-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(61,43,43,0.12);
+    }
+
+    .plan-badge {
+      position: absolute;
+      top: 1rem;
+      right: -1.8rem;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.3rem 2.5rem;
+      transform: rotate(35deg);
+      letter-spacing: 0.05em;
+    }
+
+    .plan-card.crystal { border: 2px solid #B8D4E8; }
+    .plan-card.pearl   { border: 2px solid #E8A4A4; }
+    .plan-card.diamond { border: 2px solid #C9A96E; }
+
+    .btn-crystal {
+      background: #B8D4E8;
+      color: #3D2B2B;
+    }
+    .btn-crystal:hover {
+      box-shadow: 0 6px 20px rgba(184,212,232,0.55);
+      transform: translateY(-2px);
+    }
+
+    .plan-emoji {
+      display: block;
+      margin-bottom: 0.75rem;
+      line-height: 0;
+    }
+
+    .plan-name {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+
+    .plan-price {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 0.1rem;
+    }
+
+    .plan-price span {
+      font-size: 0.9rem;
+      color: var(--text-sub);
+      font-family: var(--font-sans);
+      font-weight: 400;
+    }
+
+    .plan-tax {
+      font-size: 0.72rem;
+      color: var(--text-sub);
+      margin-bottom: 1.2rem;
+    }
+
+    .plan-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 1rem 0;
+    }
+
+    .plan-contents {
+      font-size: 0.85rem;
+      color: var(--text-sub);
+      line-height: 1.9;
+      margin-bottom: 0.5rem;
+    }
+
+    .plan-contents li {
+      list-style: none;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .plan-contents li::before {
+      content: '・';
+      position: absolute;
+      left: 0;
+    }
+
+    .plan-target {
+      font-size: 0.78rem;
+      color: #aaa;
+      margin-bottom: 1.2rem;
+      padding: 0.6rem 1rem;
+      background: var(--bg-beige);
+      border-radius: 8px;
+    }
+
+    /* ===== OFFER ===== */
+    #offer {
+      background: #fff;
+    }
+
+    .offer-list {
+      list-style: none;
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .offer-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      padding: 0.75rem 1rem;
+      background: var(--bg-beige);
+      border-radius: 10px;
+    }
+
+    .offer-check {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      margin-top: 0.1rem;
+    }
+
+    /* ===== NARROW ===== */
+    #narrow {
+      background: var(--bg-beige);
+    }
+
+    .narrow-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .narrow-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 10px rgba(61,43,43,0.06);
+    }
+
+    .narrow-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--accent);
+      color: var(--text);
+    }
+
+    .narrow-card.not h3 {
+      border-bottom-color: #ccc;
+      color: var(--text-sub);
+    }
+
+    .narrow-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .narrow-list li {
+      font-size: 0.88rem;
+      color: var(--text-sub);
+      padding-left: 1.4rem;
+      position: relative;
+      line-height: 1.7;
+    }
+
+    .narrow-card .narrow-list li::before {
+      content: '◆';
+      position: absolute;
+      left: 0;
+      font-size: 0.6rem;
+      color: var(--accent);
+      top: 0.3rem;
+    }
+
+    .narrow-card.not .narrow-list li::before {
+      color: #bbb;
+    }
+
+    /* ===== ACTION (Final CTA) ===== */
+    #action {
+      background: linear-gradient(160deg, #F9EEE7 0%, #fce6e6 100%);
+      text-align: center;
+    }
+
+    .action-inner {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .action-h2 {
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+      white-space: pre-line;
+    }
+
+    .action-sub {
+      font-size: 0.9rem;
+      color: var(--text-sub);
+      margin-bottom: 2.5rem;
+    }
+
+    .action-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .action-btns .btn {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.85);
+      padding: 3rem 1.5rem;
+    }
+
+    .footer-inner {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .footer-brand {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.1em;
+    }
+
+    .footer-tagline {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 2rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-links a {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.7);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+    }
+
+    .footer-contact {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 2rem;
+    }
+
+    .footer-contact a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: underline;
+    }
+
+    .footer-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(255,255,255,0.12);
+      margin: 1.5rem 0;
+    }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* ===== Desktop (768px+) ===== */
+    @media (min-width: 768px) {
+      section {
+        padding: 5.5rem 2rem;
+      }
+
+      .section-title {
+        font-size: 1.9rem;
+      }
+
+      #hero {
+        padding: 7rem 2rem 6rem;
+      }
+
+      .hero-h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero-h2 {
+        font-size: 1.1rem;
+      }
+
+      .hero-cta-wrap {
+        flex-direction: row;
+        align-items: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+      }
+
+      .pricing-grid {
+        flex-direction: row;
+        align-items: stretch;
+      }
+
+      .plan-card {
+        flex: 1;
+      }
+
+      .narrow-grid {
+        flex-direction: row;
+      }
+
+      .narrow-card {
+        flex: 1;
+      }
+
+      .review-card-placeholder {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .action-btns {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .action-btns .btn {
+        width: auto;
+        max-width: none;
+      }
+
+      .free-form {
+        flex-direction: row;
+      }
+
+      .free-form input[type="email"] {
+        flex: 1;
+      }
+
+      .free-form .btn {
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HERO ===== -->
+  <section id="hero">
+    <!-- SVG Star Decoration -->
+    <svg class="hero-deco" viewBox="0 0 400 600" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="300" cy="80" r="3" fill="#C9A96E"/>
+      <circle cx="160" cy="50" r="2" fill="#C9A96E"/>
+      <circle cx="350" cy="200" r="4" fill="#E8A4A4"/>
+      <circle cx="80" cy="140" r="2.5" fill="#C9A96E"/>
+      <circle cx="260" cy="300" r="2" fill="#E8A4A4"/>
+      <!-- Star 1 -->
+      <path d="M320 120 L323 130 L333 130 L325 137 L328 147 L320 140 L312 147 L315 137 L307 130 L317 130 Z" fill="#C9A96E"/>
+      <!-- Star 2 -->
+      <path d="M120 240 L122 247 L130 247 L123 252 L126 259 L120 254 L114 259 L117 252 L110 247 L118 247 Z" fill="#E8A4A4"/>
+      <!-- Moon -->
+      <path d="M360 350 C345 335 345 315 360 300 C340 305 330 325 340 345 C345 353 353 357 360 350Z" fill="#C9A96E"/>
+      <!-- Star 3 -->
+      <path d="M200 450 L203 460 L213 460 L205 467 L208 477 L200 470 L192 477 L195 467 L187 460 L197 460 Z" fill="#C9A96E"/>
+      <!-- Dots -->
+      <circle cx="100" cy="380" r="2" fill="#E8A4A4"/>
+      <circle cx="240" cy="520" r="3" fill="#C9A96E"/>
+      <circle cx="380" cy="480" r="2" fill="#E8A4A4"/>
+      <!-- Number 7 (lucky) -->
+      <text x="290" y="520" font-size="64" fill="#C9A96E" font-family="serif" opacity="0.3">7</text>
+    </svg>
+
+    <div class="hero-inner">
+      <div class="hero-label fade-in">数秘術診断レポート by suuhi_lab</div>
+      <h2 class="hero-h2 fade-in fade-in-delay-1">うまくいかないのは、あなたのせいじゃない。</h2>
+      <h1 class="hero-h1 fade-in fade-in-delay-2">生年月日でわかる、<br>あなただけの数秘診断レポート</h1>
+      <div class="hero-cta-wrap fade-in fade-in-delay-3">
+        <div>
+          <a href="MAILFORM_LINK" class="btn btn-lg">【無料】簡易診断レポートを受け取る</a>
+          <p class="hero-btn-note">メールアドレスを入力するだけ・無料でお届け</p>
+        </div>
+        <a href="#contents" class="hero-sub-link">詳しい完全版レポートを見る →</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="gold-divider-full"></div>
+
+  <!-- ===== PROBLEM ===== -->
+  <section id="problem">
+    <div class="section-inner">
+      <div class="gold-divider fade-in"></div>
+      <h2 class="section-title fade-in">頑張っているのに、<br>なぜかうまくいかない…</h2>
+      <ul class="problem-list">
+        <li class="fade-in fade-in-delay-1">転職・恋愛・お金…何か一つがいつもうまくいかない</li>
+        <li class="fade-in fade-in-delay-2">周りに合わせすぎて、自分を見失っている</li>
+        <li class="fade-in fade-in-delay-3">決断するたびに「これでよかったのか」と不安になる</li>
+        <li class="fade-in fade-in-delay-4">なぜか同じパターンの失敗を繰り返している</li>
+      </ul>
+      <div class="problem-closing fade-in fade-in-delay-5">
+        それは努力不足でも、あなたのせいでもありません。
+      </div>
+    </div>
+  </section>
+
+  <div class="gold-divider-full"></div>
+
+  <!-- ===== AGITATION ===== -->
+  <section id="agitation">
+    <div class="section-inner">
+      <div class="gold-divider fade-in"></div>
+      <h2 class="section-title fade-in">こんな状態が<br>続いていませんか？</h2>
+      <ul class="check-list">
+        <li class="fade-in fade-in-delay-1">
+          <span class="check-icon">
+            <svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          転職・恋愛・お金…何か一つうまくいかない
+        </li>
+        <li class="fade-in fade-in-delay-2">
+          <span class="check-icon">
+            <svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          周りに合わせすぎて自分を見失っている
+        </li>
+        <li class="fade-in fade-in-delay-3">
+          <span class="check-icon">
+            <svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          決断するたびに「これでよかったのか」と不安になる
+        </li>
+        <li class="fade-in fade-in-delay-4">
+          <span class="check-icon">
+            <svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          なぜか同じパターンの失敗を繰り返している
+        </li>
+      </ul>
+      <div class="agitation-closing fade-in">
+        実はこれらはすべて<br>
+        <strong>「自分の本質を知らないまま動いている」</strong><br>
+        ことが原因かもしれません。
+      </div>
+    </div>
+  </section>
+
+  <div class="gold-divider-full"></div>
+
+  <!-- ===== SOLUTION ===== -->
+  <section id="solution">
+    <div class="section-inner">
+      <div class="gold-divider fade-in"></div>
+      <h2 class="section-title fade-in">生年月日には、あなたの<br>「才能・弱点・今年の流れ」が<br>刻まれています。</h2>
+      <p class="solution-text fade-in">
+        数秘術は、古代から伝わる数字の法則をもとに<br>
+        あなただけの「本質ナンバー」を導き出す占術です。<br><br>
+        必要なのは生年月日だけ。<br>
+        あなたの本質を映す鏡として、多くの方に活用されています。
+      </p>
+      <div class="number-grid">
+
+        <div class="number-card fade-in fade-in-delay-1">
+          <svg class="num-svg" viewBox="0 0 100 88" xmlns="http://www.w3.org/2000/svg" aria-label="1">
+            <defs><linearGradient id="ng1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#C9A96E"/><stop offset="100%" stop-color="#E8A4A4"/></linearGradient></defs>
+            <text x="50" y="82" text-anchor="middle" font-size="88" font-family="'Noto Serif JP',Georgia,serif" font-weight="700" fill="url(#ng1)">1</text>
+          </svg>
+          <div class="card-line"></div>
+          <span class="card-title">開拓者</span>
+        </div>
+
+        <div class="number-card fade-in fade-in-delay-2">
+          <svg class="num-svg" viewBox="0 0 100 88" xmlns="http://www.w3.org/2000/svg" aria-label="2">
+            <defs><linearGradient id="ng2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#E8A4A4"/><stop offset="100%" stop-color="#c9a0bc"/></linearGradient></defs>
+            <text x="50" y="82" text-anchor="middle" font-size="88" font-family="'Noto Serif JP',Georgia,serif" font-weight="700" fill="url(#ng2)">2</text>
+          </svg>
+          <div class="card-line"></div>
+          <span class="card-title">サポーター</span>
+        </div>
+
+        <div class="number-card fade-in fade-in-delay-3">
+          <svg class="num-svg" viewBox="0 0 100 88" xmlns="http://www.w3.org/2000/svg" aria-label="3">
+            <defs><linearGradient id="ng3" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#c8a0bc"/><stop offset="100%" stop-color="#C9A96E"/></linearGradient></defs>
+            <text x="50" y="82" text-anchor="middle" font-size="88" font-family="'Noto Serif JP',Georgia,serif" font-weight="700" fill="url(#ng3)">3</text>
+          </svg>
+          <div class="card-line"></div>
+          <span class="card-title">表現者</span>
+        </div>
+
+        <div class="number-card fade-in fade-in-delay-1">
+          <svg class="num-svg" viewBox="0 0 100 88" xmlns="http://www.w3.org/2000/svg" aria-label="4">
+            <defs><linearGradient id="ng4" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#a07878"/><stop offset="100%" stop-color="#c8a0a0"/></linearGradient></defs>
+            <text x="50" y="82" text-anchor="middle" font-size="88" font-family="'Noto Serif JP',Georgia,serif" font-weight="700" fill="url(#ng4)">4</text>
+          </svg>
+          <div class="card-line"></div>
+          <span class="card-title">努力家</span>
+        </div>
+
+        <div class="number-card fade-in fade-in-delay-2">
+          <svg class="num-svg" viewBox="0 0 100 88" xmlns="http://www.w3.org/2000/svg" aria-label="5">
+            <defs><linearGradient id="ng5" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#d07878"/><stop offset="100%" stop-color="#E8A4A4"/></linearGradient></defs>
+            <text x="50" y="82" text-anchor="middle" font-size="88" font-family="'Noto Serif JP',Georgia,serif" font-weight="700" fill="url(#ng5)">5</text>
+          </svg>
+          <div class="card-line"></div>
+          <span class="card-title">冒険者</span>
+        </div>
+
+        <div class="number-card fade-in fade-in-delay-3">
+          <svg class="num-svg" viewBox="0 0 100 88" xmlns="http://www.w3.org/2000/svg" aria-label="6">
+            <defs><linearGradient id="ng6" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#C9A96E"/><stop offset="100%" stop-color="#e8b8ac"/></linearGradient></defs>
+            <text x="50" y="82" text-anchor="middle" font-size="88" font-family="'Noto Serif JP',Georgia,serif" font-weight="700" fill="url(#ng6)">6</text>
+          </svg>
+          <div class="card-line"></div>
+          <span class="card-title">愛情家</span>
+        </div>
+
+        <div class="number-card fade-in fade-in-delay-1">
+          <svg class="num-svg" viewBox="0 0 100 88" xmlns="http://www.w3.org/2000/svg" aria-label="7">
+            <defs><linearGradient id="ng7" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#b090a4"/><stop offset="100%" stop-color="#8B6F6F"/></linearGradient></defs>
+            <text x="50" y="82" text-anchor="middle" font-size="88" font-family="'Noto Serif JP',Georgia,serif" font-weight="700" fill="url(#ng7)">7</text>
+          </svg>
+          <div class="card-line"></div>
+          <span class="card-title">探究者</span>
+        </div>
+
+        <div class="number-card fade-in fade-in-delay-2">
+          <svg class="num-svg" viewBox="0 0 100 88" xmlns="http://www.w3.org/2000/svg" aria-label="8">
+            <defs><linearGradient id="ng8" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#9a7840"/><stop offset="100%" stop-color="#C9A96E"/></linearGradient></defs>
+            <text x="50" y="82" text-anchor="middle" font-size="88" font-family="'Noto Serif JP',Georgia,serif" font-weight="700" fill="url(#ng8)">8</text>
+          </svg>
+          <div class="card-line"></div>
+          <span class="card-title">成功者</span>
+        </div>
+
+        <div class="number-card fade-in fade-in-delay-3">
+          <svg class="num-svg" viewBox="0 0 100 88" xmlns="http://www.w3.org/2000/svg" aria-label="9">
+            <defs><linearGradient id="ng9" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#E8A4A4"/><stop offset="100%" stop-color="#C9A96E"/></linearGradient></defs>
+            <text x="50" y="82" text-anchor="middle" font-size="88" font-family="'Noto Serif JP',Georgia,serif" font-weight="700" fill="url(#ng9)">9</text>
+          </svg>
+          <div class="card-line"></div>
+          <span class="card-title">奉仕者</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="gold-divider-full"></div>
+
+  <!-- ===== BENEFIT ===== -->
+  <section id="benefit">
+    <div class="section-inner">
+      <div class="gold-divider fade-in"></div>
+      <h2 class="section-title fade-in">読むことで変わること</h2>
+      <ul class="benefit-list">
+        <li class="fade-in fade-in-delay-1">
+          <span class="benefit-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M10 1.5 L11.6 8.4 L18.5 10 L11.6 11.6 L10 18.5 L8.4 11.6 L1.5 10 L8.4 8.4Z" fill="#C9A96E"/><circle cx="16" cy="4" r="1.2" fill="#E8A4A4"/><circle cx="4.5" cy="15.5" r="0.8" fill="#E8A4A4"/></svg></span>
+          「なぜ自分はこう動くのか」が腑に落ちる
+        </li>
+        <li class="fade-in fade-in-delay-2">
+          <span class="benefit-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M10 1.5 L11.6 8.4 L18.5 10 L11.6 11.6 L10 18.5 L8.4 11.6 L1.5 10 L8.4 8.4Z" fill="#C9A96E"/><circle cx="16" cy="4" r="1.2" fill="#E8A4A4"/><circle cx="4.5" cy="15.5" r="0.8" fill="#E8A4A4"/></svg></span>
+          今年動くべきタイミングがわかる
+        </li>
+        <li class="fade-in fade-in-delay-3">
+          <span class="benefit-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M10 1.5 L11.6 8.4 L18.5 10 L11.6 11.6 L10 18.5 L8.4 11.6 L1.5 10 L8.4 8.4Z" fill="#C9A96E"/><circle cx="16" cy="4" r="1.2" fill="#E8A4A4"/><circle cx="4.5" cy="15.5" r="0.8" fill="#E8A4A4"/></svg></span>
+          向いている仕事・お金の使い方が見えてくる
+        </li>
+        <li class="fade-in fade-in-delay-4">
+          <span class="benefit-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M10 1.5 L11.6 8.4 L18.5 10 L11.6 11.6 L10 18.5 L8.4 11.6 L1.5 10 L8.4 8.4Z" fill="#C9A96E"/><circle cx="16" cy="4" r="1.2" fill="#E8A4A4"/><circle cx="4.5" cy="15.5" r="0.8" fill="#E8A4A4"/></svg></span>
+          人間関係のモヤモヤの正体がわかる
+        </li>
+        <li class="fade-in fade-in-delay-5">
+          <span class="benefit-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M10 1.5 L11.6 8.4 L18.5 10 L11.6 11.6 L10 18.5 L8.4 11.6 L1.5 10 L8.4 8.4Z" fill="#C9A96E"/><circle cx="16" cy="4" r="1.2" fill="#E8A4A4"/><circle cx="4.5" cy="15.5" r="0.8" fill="#E8A4A4"/></svg></span>
+          自分を責めることが少なくなる
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="gold-divider-full"></div>
+
+  <!-- ===== EVIDENCE ===== -->
+  <section id="evidence">
+    <div class="section-inner">
+      <div class="gold-divider fade-in"></div>
+      <h2 class="section-title fade-in">読んでくださった方の声</h2>
+      <div class="evidence-empty fade-in fade-in-delay-1">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:1rem;" aria-hidden="true">
+          <circle cx="24" cy="24" r="22" stroke="#E8A4A4" stroke-width="1.5"/>
+          <path d="M16 28 C18 24 22 22 24 22 C26 22 30 24 32 28" stroke="#E8A4A4" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="18" cy="20" r="2" fill="#E8A4A4"/>
+          <circle cx="30" cy="20" r="2" fill="#E8A4A4"/>
+        </svg>
+        <p>現在準備中です。<br>ローンチ後に実際にお読みいただいた方の声を掲載します。</p>
+      </div>
+      <!-- Review cards (placeholder, content to be added after launch) -->
+      <div class="review-card-placeholder" aria-hidden="true">
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">お客様の声がここに入ります。</p>
+          <p class="review-author">— 20代女性</p>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">お客様の声がここに入ります。</p>
+          <p class="review-author">— 30代女性</p>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">お客様の声がここに入ります。</p>
+          <p class="review-author">— 20代女性</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="gold-divider-full"></div>
+
+  <!-- ===== FREE SECTION ===== -->
+  <section id="free">
+    <div class="free-inner">
+      <div class="gold-divider fade-in" style="background:rgba(255,255,255,0.5);"></div>
+      <h2 class="section-title fade-in">まずは無料で<br>試してみませんか？</h2>
+      <div class="free-content-box fade-in fade-in-delay-1">
+        <span class="free-badge">無料特典</span>
+        <h3>【無料】簡易数秘診断レポート</h3>
+        <ul>
+          <li>あなたの数秘ナンバー</li>
+          <li>基本的な性格キーワード</li>
+          <li>一言メッセージ</li>
+        </ul>
+      </div>
+      <p class="fade-in fade-in-delay-2" style="color:rgba(255,255,255,0.9);font-size:0.9rem;margin-bottom:0.5rem;">
+        メールアドレスを入力するだけで<br>すぐにお届けします。
+      </p>
+      <form class="free-form fade-in fade-in-delay-3" action="MAILFORM_LINK" method="POST" onsubmit="return false;">
+        <input type="email" placeholder="メールアドレスを入力してください" required>
+        <button type="submit" class="btn btn-white">無料で受け取る</button>
+      </form>
+      <p class="free-note fade-in fade-in-delay-4">
+        ※ご登録いただいたメールアドレスに診断レポートをお送りします。<br>
+        　迷惑メールフォルダもご確認ください。
+      </p>
+    </div>
+  </section>
+
+  <div class="gold-divider-full"></div>
+
+  <!-- ===== CONTENTS (PRICING) ===== -->
+  <section id="contents">
+    <div class="section-inner">
+      <div class="gold-divider fade-in"></div>
+      <h2 class="section-title fade-in">3つのプランから<br>お選びください</h2>
+      <div class="pricing-grid">
+
+        <!-- Crystal プラン -->
+        <div class="plan-card crystal fade-in fade-in-delay-1">
+          <span class="plan-emoji">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Crystal">
+              <!-- Crystal: 宝石カット形 -->
+              <polygon points="20,4 34,14 34,26 20,36 6,26 6,14" stroke="#B8D4E8" stroke-width="1.5" fill="#B8D4E8" fill-opacity="0.2"/>
+              <polygon points="20,4 34,14 20,20" fill="#B8D4E8" opacity="0.45"/>
+              <polygon points="20,4 6,14 20,20" fill="#B8D4E8" opacity="0.3"/>
+              <polygon points="6,14 6,26 20,20" fill="#B8D4E8" opacity="0.35"/>
+              <polygon points="34,14 34,26 20,20" fill="#B8D4E8" opacity="0.5"/>
+              <polygon points="6,26 20,36 20,20" fill="#B8D4E8" opacity="0.25"/>
+              <polygon points="20,36 34,26 20,20" fill="#B8D4E8" opacity="0.4"/>
+            </svg>
+          </span>
+          <div class="plan-name">Crystal プラン</div>
+          <div class="plan-price">¥980<span>（税込）</span></div>
+          <div class="plan-tax"></div>
+          <div class="plan-divider"></div>
+          <ul class="plan-contents">
+            <li>数秘ナンバーの基本診断</li>
+            <li>性格・才能レポート（約10ページ）</li>
+            <li>今月のテーマメッセージ</li>
+          </ul>
+          <div class="plan-divider"></div>
+          <div class="plan-target">まず試してみたい方・数秘術が初めての方</div>
+          <a href="STRIPE_LINK_UME" class="btn btn-crystal btn-full">Crystal プランを購入する（¥980）</a>
+        </div>
+
+        <!-- Pearl プラン（おすすめ） -->
+        <div class="plan-card pearl fade-in fade-in-delay-2">
+          <span class="plan-badge">おすすめ</span>
+          <span class="plan-emoji">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Pearl">
+              <!-- Pearl: 真珠・光沢球 -->
+              <circle cx="20" cy="20" r="14" fill="#E8A4A4" opacity="0.35"/>
+              <circle cx="20" cy="20" r="14" stroke="#E8A4A4" stroke-width="1.5"/>
+              <ellipse cx="15" cy="14" rx="4" ry="2.5" fill="#fff" opacity="0.5" transform="rotate(-30 15 14)"/>
+              <circle cx="20" cy="20" r="3" fill="#E8A4A4" opacity="0.6"/>
+            </svg>
+          </span>
+          <div class="plan-name">Pearl プラン</div>
+          <div class="plan-price">¥2,980<span>（税込）</span></div>
+          <div class="plan-tax"></div>
+          <div class="plan-divider"></div>
+          <ul class="plan-contents">
+            <li>数秘ナンバー＋今年の運勢</li>
+            <li>性格・才能・対人関係の分析</li>
+            <li>月別アドバイス（1〜12月）</li>
+            <li>仕事・恋愛・お金の流れ</li>
+            <li>あなたへのメッセージ</li>
+            <li>全25ページの完全版</li>
+          </ul>
+          <div class="plan-divider"></div>
+          <div class="plan-target">本質的に自分を知りたい方・今年の方向性を確認したい方</div>
+          <a href="STRIPE_LINK_TAKE" class="btn btn-full btn-gold">Pearl プランを購入する（¥2,980）</a>
+        </div>
+
+        <!-- Diamond プラン -->
+        <div class="plan-card diamond fade-in fade-in-delay-3">
+          <span class="plan-emoji">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Diamond">
+              <!-- Diamond: ダイヤカット -->
+              <polygon points="20,3 35,15 20,37 5,15" stroke="#C9A96E" stroke-width="1.5" fill="#C9A96E" fill-opacity="0.18"/>
+              <polygon points="20,3 35,15 20,18" fill="#C9A96E" opacity="0.5"/>
+              <polygon points="20,3 5,15 20,18" fill="#C9A96E" opacity="0.35"/>
+              <polygon points="5,15 20,37 20,18" fill="#C9A96E" opacity="0.28"/>
+              <polygon points="35,15 20,37 20,18" fill="#C9A96E" opacity="0.42"/>
+              <line x1="5" y1="15" x2="35" y2="15" stroke="#C9A96E" stroke-width="0.8" opacity="0.6"/>
+            </svg>
+          </span>
+          <div class="plan-name">Diamond プラン</div>
+          <div class="plan-price">¥5,480<span>（税込）</span></div>
+          <div class="plan-tax"></div>
+          <div class="plan-divider"></div>
+          <ul class="plan-contents">
+            <li>Pearl プランの全内容</li>
+            <li>相性診断（気になる人・パートナー）</li>
+            <li>来年の運勢プレビュー</li>
+            <li>悩み別アドバイス（転職・恋愛・お金から1つ）</li>
+            <li>全35ページの完全版</li>
+          </ul>
+          <div class="plan-divider"></div>
+          <div class="plan-target">徹底的に深掘りしたい方・大切な決断を控えている方</div>
+          <a href="STRIPE_LINK_MATSU" class="btn btn-gold btn-full">Diamond プランを購入する（¥5,480）</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="gold-divider-full"></div>
+
+  <!-- ===== OFFER ===== -->
+  <section id="offer">
+    <div class="section-inner">
+      <div class="gold-divider fade-in"></div>
+      <h2 class="section-title fade-in">お届けについて</h2>
+      <ul class="offer-list">
+        <li class="fade-in fade-in-delay-1">
+          <span class="offer-check"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="11" cy="11" r="9.5" stroke="#C9A96E" stroke-width="1.5"/><path d="M7 11.5L9.8 14.5L15 8" stroke="#C9A96E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          購入後、自動でメールにお届けします
+        </li>
+        <li class="fade-in fade-in-delay-2">
+          <span class="offer-check"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="11" cy="11" r="9.5" stroke="#C9A96E" stroke-width="1.5"/><path d="M7 11.5L9.8 14.5L15 8" stroke="#C9A96E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          深夜・早朝でも即時対応（自動配信）
+        </li>
+        <li class="fade-in fade-in-delay-3">
+          <span class="offer-check"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="11" cy="11" r="9.5" stroke="#C9A96E" stroke-width="1.5"/><path d="M7 11.5L9.8 14.5L15 8" stroke="#C9A96E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          PDFファイル形式・スマホでもすぐに読めます
+        </li>
+        <li class="fade-in fade-in-delay-4">
+          <span class="offer-check"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="11" cy="11" r="9.5" stroke="#C9A96E" stroke-width="1.5"/><path d="M7 11.5L9.8 14.5L15 8" stroke="#C9A96E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          Pearl・Diamond プラン限定：「あなたの数秘が活きる習慣リスト」プレゼント
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="gold-divider-full"></div>
+
+  <!-- ===== NARROW ===== -->
+  <section id="narrow">
+    <div class="section-inner">
+      <div class="gold-divider fade-in"></div>
+      <h2 class="section-title fade-in">こんな方へ</h2>
+      <div class="narrow-grid">
+        <div class="narrow-card fade-in fade-in-delay-1">
+          <h3>こんな方におすすめです</h3>
+          <ul class="narrow-list">
+            <li>自分の本質や強みを言語化したい方</li>
+            <li>転職・恋愛・人間関係で迷っている方</li>
+            <li>「なぜかうまくいかない」の原因を探りたい方</li>
+            <li>自己分析を深めたい方</li>
+          </ul>
+        </div>
+        <div class="narrow-card not fade-in fade-in-delay-2">
+          <h3>このような方には<br>おすすめしません</h3>
+          <ul class="narrow-list">
+            <li>占いを完全に否定される方</li>
+            <li>即効性のある問題解決を求める方</li>
+            <li>医療・法律・金融などの専門的アドバイスを求める方</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="gold-divider-full"></div>
+
+  <!-- ===== ACTION (Final CTA) ===== -->
+  <section id="action">
+    <div class="action-inner">
+      <div class="gold-divider fade-in"></div>
+      <h2 class="action-h2 fade-in">あなたの「本質」、<br>まだ知らないままでいますか？</h2>
+      <p class="action-sub fade-in fade-in-delay-1">生年月日だけで今すぐわかります。深夜でも即日お届け。</p>
+      <div class="action-btns">
+        <a href="MAILFORM_LINK" class="btn btn-lg fade-in fade-in-delay-2">【無料】簡易診断を受け取る</a>
+        <a href="STRIPE_LINK_TAKE" class="btn btn-gold btn-lg fade-in fade-in-delay-3">Pearl プランを購入する（¥2,980）</a>
+        <a href="#contents" class="btn btn-outline fade-in fade-in-delay-4">全プランを見る</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-inner">
+      <!-- SVG decorative moon -->
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:0.75rem;opacity:0.5;" aria-hidden="true">
+        <path d="M22 16 C18 12 14 12 10 16 C14 20 18 20 22 16Z M22 16 C24 18 24 22 22 24 C26 22 28 18 26 14 C25 15 23.5 15.5 22 16Z" fill="#C9A96E"/>
+      </svg>
+      <div class="footer-brand">suuhi_lab</div>
+      <div class="footer-tagline">あなただけの数秘術診断レポート</div>
+      <div class="footer-links">
+        <a href="tokusho.html">特定商取引法に基づく表記</a>
+        <a href="privacy.html">プライバシーポリシー</a>
+      </div>
+      <div class="footer-contact">
+        お問い合わせ：<a href="mailto:info@suuhi-lab.com">info@suuhi-lab.com</a>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-copy">© 2025 suuhi_lab</div>
+    </div>
+  </footer>
+
+  <script>
+    // ===== Scroll Fade-in (IntersectionObserver) =====
+    (function() {
+      var targets = document.querySelectorAll('.fade-in');
+      if (!targets.length) return;
+
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      targets.forEach(function(el) {
+        observer.observe(el);
+      });
+
+      // Elements already in viewport on load
+      window.addEventListener('load', function() {
+        targets.forEach(function(el) {
+          var rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight) {
+            el.classList.add('visible');
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
