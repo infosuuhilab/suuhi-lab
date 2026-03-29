@@ -213,29 +213,118 @@
       font-weight: 400;
     }
 
-    .hero-cta-wrap {
+    /* ===== 数秘簡易診断UI ===== */
+    .suuhi-form {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .suuhi-form-label {
+      font-size: 0.8rem;
+      color: var(--text-sub);
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+
+    .suuhi-selects {
+      display: flex;
+      gap: 1.2rem;
+      justify-content: center;
+      margin-bottom: 1.4rem;
+    }
+
+    .suuhi-select-wrap {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
-      align-items: flex-start;
+      align-items: center;
+      gap: 0.25rem;
     }
 
-    .hero-btn-note {
-      font-size: 0.72rem;
-      color: var(--text-sub);
-      margin-top: -0.5rem;
-    }
-
-    .hero-sub-link {
-      font-size: 0.9rem;
-      color: var(--text-sub);
-      text-decoration: underline;
-      text-underline-offset: 3px;
+    .suuhi-select-wrap select {
+      appearance: none;
+      -webkit-appearance: none;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid var(--gold);
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      color: var(--text);
+      padding: 0.3rem 0.2rem;
       cursor: pointer;
+      outline: none;
+      width: 72px;
+      text-align: center;
     }
 
-    .hero-sub-link:hover {
-      color: var(--accent);
+    .suuhi-select-wrap select:focus {
+      border-bottom-color: var(--accent);
+    }
+
+    .suuhi-select-wrap span {
+      font-size: 0.7rem;
+      color: var(--text-sub);
+      letter-spacing: 0.08em;
+    }
+
+    .suuhi-form .btn {
+      min-width: 200px;
+    }
+
+    /* 結果エリア */
+    .suuhi-result {
+      display: none;
+      margin-top: 2rem;
+      padding: 1.6rem 1.4rem;
+      background: rgba(255, 253, 249, 0.85);
+      border: 1px solid rgba(201, 169, 110, 0.3);
+      border-radius: 16px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .suuhi-result.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .suuhi-result-number {
+      font-family: var(--font-serif);
+      font-size: 3.6rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--gold), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.1;
+      margin-bottom: 0.4rem;
+    }
+
+    .suuhi-result-label {
+      font-size: 0.7rem;
+      color: var(--text-sub);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.8rem;
+    }
+
+    .suuhi-result-keyword {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 0.7rem;
+    }
+
+    .suuhi-result-desc {
+      font-size: 0.88rem;
+      color: var(--text-sub);
+      line-height: 1.9;
+      margin-bottom: 1.4rem;
+    }
+
+    .suuhi-result .btn {
+      font-size: 0.95rem;
     }
 
     /* SVG Stars decoration */
@@ -932,11 +1021,13 @@
         font-size: 1.1rem;
       }
 
-      .hero-cta-wrap {
-        flex-direction: row;
-        align-items: center;
-        gap: 1.5rem;
-        flex-wrap: wrap;
+      .suuhi-selects {
+        gap: 2rem;
+      }
+
+      .suuhi-select-wrap select {
+        width: 88px;
+        font-size: 1.2rem;
       }
 
       .pricing-grid {
@@ -1017,12 +1108,34 @@
       <div class="hero-label fade-in">数秘術診断レポート by suuhi_lab</div>
       <h2 class="hero-h2 fade-in fade-in-delay-1">うまくいかないのは、あなたのせいじゃない。</h2>
       <h1 class="hero-h1 fade-in fade-in-delay-2">生年月日でわかる、<br>あなただけの数秘診断レポート</h1>
-      <div class="hero-cta-wrap fade-in fade-in-delay-3">
-        <div>
-          <a href="MAILFORM_LINK" class="btn btn-lg">【無料】簡易診断レポートを受け取る</a>
-          <p class="hero-btn-note">メールアドレスを入力するだけ・無料でお届け</p>
+      <div class="suuhi-form fade-in fade-in-delay-3">
+        <p class="suuhi-form-label">生年月日を入力してください</p>
+        <div class="suuhi-selects">
+          <div class="suuhi-select-wrap">
+            <select id="suuhi-year" aria-label="年">
+            </select>
+            <span>年</span>
+          </div>
+          <div class="suuhi-select-wrap">
+            <select id="suuhi-month" aria-label="月">
+            </select>
+            <span>月</span>
+          </div>
+          <div class="suuhi-select-wrap">
+            <select id="suuhi-day" aria-label="日">
+            </select>
+            <span>日</span>
+          </div>
         </div>
-        <a href="#contents" class="hero-sub-link">詳しい完全版レポートを見る →</a>
+        <button class="btn" id="suuhi-btn" type="button">数秘を調べる</button>
+
+        <div class="suuhi-result" id="suuhi-result" aria-live="polite">
+          <div class="suuhi-result-number" id="suuhi-result-number"></div>
+          <div class="suuhi-result-label">あなたの数秘ナンバー</div>
+          <div class="suuhi-result-keyword" id="suuhi-result-keyword"></div>
+          <div class="suuhi-result-desc" id="suuhi-result-desc"></div>
+          <a href="#free" class="btn">詳しいレポートを受け取る</a>
+        </div>
       </div>
     </div>
   </section>
@@ -1480,6 +1593,105 @@
   </footer>
 
   <script>
+    // ===== 数秘簡易診断 =====
+    (function() {
+      var yearSel = document.getElementById('suuhi-year');
+      var monthSel = document.getElementById('suuhi-month');
+      var daySel = document.getElementById('suuhi-day');
+      var btn = document.getElementById('suuhi-btn');
+      var result = document.getElementById('suuhi-result');
+      var resultNumber = document.getElementById('suuhi-result-number');
+      var resultKeyword = document.getElementById('suuhi-result-keyword');
+      var resultDesc = document.getElementById('suuhi-result-desc');
+
+      // ドロップダウン生成
+      var yearOpt = document.createElement('option');
+      yearOpt.value = ''; yearOpt.textContent = '----';
+      yearSel.appendChild(yearOpt);
+      for (var y = 2010; y >= 1940; y--) {
+        var o = document.createElement('option');
+        o.value = y; o.textContent = y;
+        yearSel.appendChild(o);
+      }
+
+      var monthOpt = document.createElement('option');
+      monthOpt.value = ''; monthOpt.textContent = '--';
+      monthSel.appendChild(monthOpt);
+      for (var m = 1; m <= 12; m++) {
+        var o = document.createElement('option');
+        o.value = m; o.textContent = m;
+        monthSel.appendChild(o);
+      }
+
+      var dayOpt = document.createElement('option');
+      dayOpt.value = ''; dayOpt.textContent = '--';
+      daySel.appendChild(dayOpt);
+      for (var d = 1; d <= 31; d++) {
+        var o = document.createElement('option');
+        o.value = d; o.textContent = d;
+        daySel.appendChild(o);
+      }
+
+      // 数秘データ
+      var data = {
+        1:  { keyword: '開拓者・リーダー',       desc: '自分の道を切り開く力を持つ、強い意志の持ち主。\n人に頼らず独立独歩で進む姿勢が才能です。' },
+        2:  { keyword: '協調・サポーター',       desc: '人の気持ちに寄り添う共感力が天才的。\n縁の下の力持ちとして、周囲に安心感を与えます。' },
+        3:  { keyword: '創造・表現者',           desc: '豊かな感性と表現力で人を惹きつける才能。\nアイデアと言葉で世界を彩ることができます。' },
+        4:  { keyword: '堅実・努力家',           desc: 'コツコツと積み上げる力が誰よりも強い。\n信頼と実績を着実に築いていくタイプです。' },
+        5:  { keyword: '自由・冒険者',           desc: '変化と刺激の中で輝く自由な魂の持ち主。\n好奇心と行動力で新しい世界を切り開きます。' },
+        6:  { keyword: '愛情・調和',             desc: '深い愛情と美意識で周囲を包み込む存在。\n人と人をつなぎ、場を美しく整える才能があります。' },
+        7:  { keyword: '探究・哲学者',           desc: '真実を追い求める深い知性の持ち主。\n直感と分析力で物事の本質を見抜きます。' },
+        8:  { keyword: '成功・野心家',           desc: '結果にこだわり、大きな目標を実現する力がある。\nお金と成功を引き寄せる強いエネルギーの持ち主です。' },
+        9:  { keyword: '奉仕・完成者',           desc: '広い視野と深い愛で人類に貢献する使命を持つ。\n許しと慈悲の心で周囲を癒す存在です。' },
+        11: { keyword: '直感・スピリチュアル',   desc: '鋭い直感と高い精神性を持つマスターナンバー。\n見えない世界とつながる特別な感受性があります。' },
+        22: { keyword: '大きなビジョン',         desc: '夢を現実に変える力を持つマスタービルダー。\n大きなビジョンで世界に貢献できる器があります。' },
+        33: { keyword: '慈悲・マスター',         desc: '無条件の愛で人を癒す最高のマスターナンバー。\nその存在自体が周囲に光をもたらします。' }
+      };
+
+      // 計算ロジック
+      function calcSuuhi(year, month, day) {
+        var digits = String(year) + String(month) + String(day);
+        var sum = 0;
+        for (var i = 0; i < digits.length; i++) {
+          sum += parseInt(digits[i], 10);
+        }
+        // マスターナンバー判定しながら1桁に還元
+        while (sum > 9 && sum !== 11 && sum !== 22 && sum !== 33) {
+          var s = 0;
+          var str = String(sum);
+          for (var j = 0; j < str.length; j++) s += parseInt(str[j], 10);
+          sum = s;
+        }
+        return sum;
+      }
+
+      btn.addEventListener('click', function() {
+        var y = yearSel.value;
+        var m = monthSel.value;
+        var d = daySel.value;
+        if (!y || !m || !d) {
+          alert('年・月・日をすべて選択してください');
+          return;
+        }
+        var num = calcSuuhi(parseInt(y), parseInt(m), parseInt(d));
+        var info = data[num];
+        if (!info) return;
+
+        resultNumber.textContent = num;
+        resultKeyword.textContent = info.keyword;
+        resultDesc.innerHTML = info.desc.replace(/\n/g, '<br>');
+
+        result.style.display = 'block';
+        // フェードイン
+        requestAnimationFrame(function() {
+          requestAnimationFrame(function() {
+            result.classList.add('show');
+            result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          });
+        });
+      });
+    })();
+
     // ===== Scroll Fade-in (IntersectionObserver) =====
     (function() {
       var targets = document.querySelectorAll('.fade-in');
