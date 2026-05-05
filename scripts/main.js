@@ -140,27 +140,6 @@
   });
 })();
 
-// ===== Variant Switcher =====
-(function() {
-  var tabs = document.querySelectorAll('.variant-tab');
-  var saved = localStorage.getItem('suuhi-variant') || 'A';
-  setVariant(saved);
-  tabs.forEach(function(tab) {
-    tab.addEventListener('click', function() {
-      var v = tab.dataset.variant;
-      setVariant(v);
-      localStorage.setItem('suuhi-variant', v);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  });
-  function setVariant(v) {
-    document.body.dataset.variant = v;
-    tabs.forEach(function(t) {
-      t.classList.toggle('active', t.dataset.variant === v);
-    });
-  }
-})();
-
 // ===== Motif Switcher (default: stars) =====
 (function() {
   var saved = localStorage.getItem('suuhi-motif') || 'stars';
